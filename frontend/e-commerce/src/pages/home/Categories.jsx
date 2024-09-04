@@ -9,9 +9,9 @@ const Categories = () => {
    
     const categories = [
         {name: 'Accessories', path: 'accessories', image: category1},
-        {name: 'Dress Collection', path: 'accessories', image: category2},
-        {name: 'Jewelry', path: 'accessories', image: category3},
-        {name: 'Cosmetics', path: 'accessories', image: category4},
+        {name: 'Dress Collection', path: 'dress', image: category2},
+        {name: 'Jewelry', path: 'jewelry', image: category3},
+        {name: 'Cosmetics', path: 'cosmetics', image: category4},
     ]
   
     return (
@@ -19,7 +19,7 @@ const Categories = () => {
         <div className='product__grid'>
             {
                 categories.map((category) => (
-                    <Link key={category.name} to={`/categories/${category.image.path}`} className='categories__card'>
+                    <Link key={category.name} to={`/categories/${category.path}`} className='categories__card'>
                         <img src={category.image} alt={category.name} />
                         <h4>{category.name}</h4>
                     </Link>
