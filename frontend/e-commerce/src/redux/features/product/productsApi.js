@@ -1,7 +1,7 @@
-import { createApi } from '@reduxjs/toolkit/query/react';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { getBaseUrl } from '../../../utils/baseURL';
 
-export const productsApi = createApi({
+const productsApi = createApi({
   reducerPath: 'productsApi',
   baseQuery: fetchBaseQuery({
     baseUrl: `${getBaseUrl()}/api/products`,
@@ -22,11 +22,11 @@ export const productsApi = createApi({
           category: category || '',
           color: color || '',
           minPrice: minPrice || 0,
-          maxPrice: maxPrice || 0,
+          maxPrice: maxPrice || '',
           page: page.toString(),
           limit: limit.toString(),
         }).toString();
-        return `/${queryParams}`;
+        return `/?${queryParams}`;
       },
       provideTags: ['Products'],
     }),
@@ -49,16 +49,29 @@ export const productsApi = createApi({
     fetchRelatedProducts: builder.query({
       query: (id) => `related/${id}`
     }),
+
     updateProduct: builder.mutation({
       query: ({id, ...rest}) => ({
         url: `/update-product/${id}`,
         method: 'PATCH',
         body: rest,
         credentials: 'include',
-      })
-    })
+      }),
+      invalidatesTags: ['Products']
+    }),
+
+    deleteProduct: builder.mutation({
+      query: (id) => ({
+        url: `/${id}`,
+        method: 'DELETE',
+        credentials: 'include',
+      }),
+      invalidatesTags: (result, error, id) => [{ type: 'Products', id }]
+    }),
 
   }),
 });
 
-export const {} = productsApi;
+export const { useFetchAllProductsQuery, useFetchProductByIdQuery, useAddProductMutation, useUpdateProductMutation, useDeleteProductMutation, useFetchRelatedProductsQuery } = productsApi;
+
+export default productsApi;
