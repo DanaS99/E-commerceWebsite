@@ -51,7 +51,7 @@ router.get('/', async (req, res) => {
     if (minPrice && maxPrice) {
       const min = parseFloat(minPrice);
       const max = parseFloat(maxPrice);
-      if (!isNaN(min) && !isNan(max)) {
+      if (!isNaN(min) && !isNaN(max)) {
         filter.price = { $gte: min, $lte: max };
       }
     }
@@ -67,7 +67,7 @@ router.get('/', async (req, res) => {
     res.status(200).send({ products, totalPages, totalProducts });
   } catch (error) {
     console.log('Error fetching products ', error);
-    res.status(500).send({ message: 'Error fetching products' });
+    res.status(500).send({ message: error });
   }
 });
 
@@ -79,7 +79,7 @@ router.get('/:id', async (req, res) => {
       'author',
       'email username'
     );
-
+    
     if (!product) {
       res.status(404).send({ message: 'Product not found ..' });
     }
@@ -90,7 +90,7 @@ router.get('/:id', async (req, res) => {
     res.status(200).send({ product, reviews });
   } catch (error) {
     console.log('Error fetching product', error);
-    res.status(500).send({ message: 'Error fetching product' });
+    res.status(500).send({ message: error });
   }
 });
 
