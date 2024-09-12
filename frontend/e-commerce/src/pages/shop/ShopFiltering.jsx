@@ -5,7 +5,8 @@ const ShopFiltering = ({
   filtersState,
   setFiltersState,
   clearFilters,
-}) => {
+}) => 
+{
   return (
     <div className='space-y-5 flex-shrink-0'>
       <h3>Filters</h3>

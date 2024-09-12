@@ -7,6 +7,7 @@ import { addToCart } from '../../../redux/features/cart/cartSlice';
 import ReviewsCard from '../reviews/ReviewsCard';
 
 const SingleProduct = () => {
+  console.log('singlep');
   const { id } = useParams();
   //console.log(id);
   const dispatch = useDispatch();
@@ -16,12 +17,14 @@ const SingleProduct = () => {
   const singleProduct = data?.product || {};
   const productReviews = data?.reviews || [];
 
+  console.log(singleProduct);
+
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
   };
 
   if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error loading product details...</p>;
+  if (error) return console.log(error);
 
   return (
     <>

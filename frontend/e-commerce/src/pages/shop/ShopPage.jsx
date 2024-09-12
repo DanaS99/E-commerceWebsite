@@ -12,6 +12,10 @@ const ShopPage = () => {
     priceRange: '',
   });
 
+
+
+console.log('here i am shop');
+
   const [currentPage, setCurrentPage] = useState(1);
   const [ProductsPerPage] = useState(8);
 
