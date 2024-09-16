@@ -6,7 +6,7 @@ import { getBaseUrl } from '../../../utils/baseURL';
 
 const OrderSummary = () => {
   const dispatch = useDispatch();
-
+  
   const { user } = useSelector((state) => state.auth);
   console.log(user);
 
@@ -22,6 +22,7 @@ const OrderSummary = () => {
 
   //payment integration using stripe
   const makePayment = async (e) => {
+    console.log(import.meta.env.VITE_STRIPE);
     const stripe = await loadStripe(import.meta.env.VITE_STRIPE);
     const body = {
       products: products,
@@ -40,13 +41,13 @@ const OrderSummary = () => {
       }
     );
     const session  = await response.json();
-    console.log(session);
+    console.log('session',session);
     const result = stripe.redirectToCheckout({
       sessionId: session.id
     })
     console.log('result', result);
     if (result.error) {
-      console.log('error',error);
+      console.log('error',result.error);
     }
   };
 
