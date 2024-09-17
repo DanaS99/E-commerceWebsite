@@ -17,6 +17,11 @@ import UserPayment from '../pages/dashboard/user/User/UserPayment';
 import UserReviews from '../pages/dashboard/user/User/UserReviews';
 import UserProfile from '../pages/dashboard/user/User/UserProfile';
 import AdminDashboardMain from '../pages/dashboard/admin/dashboard/AdminDashboardMain';
+import ManageProducts from '../pages/dashboard/admin/manageProduct/ManageProducts';
+import UpdateProduct from '../pages/dashboard/admin/manageProduct/UpdateProduct';
+import AddProduct from '../pages/dashboard/admin/productAdd/AddProduct';
+import ManageUsers from '../pages/dashboard/admin/users/ManageUsers';
+import ManageOrders from '../pages/dashboard/admin/manageOrders/ManageOrders';
 
 
 const router = createBrowserRouter([
@@ -107,7 +112,7 @@ const router = createBrowserRouter([
         path: 'add-new-post',
         element: (
           <PrivateRoute role='admin'>
-            <div>add new post dashboard</div>
+            <AddProduct />
           </PrivateRoute>
         ),
       },
@@ -115,7 +120,7 @@ const router = createBrowserRouter([
         path: 'manage-products',
         element: (
           <PrivateRoute role='admin'>
-            <div>mange products dashboard</div>
+            <ManageProducts />
           </PrivateRoute>
         ),
       },
@@ -123,7 +128,7 @@ const router = createBrowserRouter([
         path: 'update-product/:id',
         element: (
           <PrivateRoute role='admin'>
-            <div>update product dashboard</div>
+            <UpdateProduct />
           </PrivateRoute>
         ),
       },
@@ -131,7 +136,7 @@ const router = createBrowserRouter([
         path: 'users',
         element: (
           <PrivateRoute role='admin'>
-            <div>users dashboard</div>
+            <ManageUsers />
           </PrivateRoute>
         ),
       },
@@ -139,7 +144,7 @@ const router = createBrowserRouter([
         path: 'manage-orders',
         element: (
           <PrivateRoute role='admin'>
-            <div>manage orders dashboard</div>
+            <ManageOrders />
           </PrivateRoute>
         ),
       },

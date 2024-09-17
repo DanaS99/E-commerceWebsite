@@ -1,12 +1,13 @@
 import React from 'react'
 
 const AdminStats = ({stats}) => {
+  console.log(stats);
   return (
     <div className='my-5 space-y-4'>
     <div className='flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0'>
       <div className='bg-white shadow-md rounded-lg p-6 border border-gray-200 hover:border-primary cursor-pointer hover:scale-105 transition-all duration-200'>
         <h2 className='text-xl font-semibold mb-2'>Total Earnings</h2>
-        <p className='text-2xl font-bold'>${stats?.totalEarnings}</p>
+        <p className='text-2xl font-bold'>${stats?.totalEarning}</p>
       </div>
       <div className='bg-white shadow-md rounded-lg p-6 border border-gray-200 hover:border-primary cursor-pointer hover:scale-105 transition-all duration-200'>
         <h2 className='text-xl font-semibold mb-2'>All Orders</h2>

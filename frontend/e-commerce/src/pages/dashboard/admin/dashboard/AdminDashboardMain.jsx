@@ -6,7 +6,8 @@ import AdminStatsChart from './AdminStatsChart';
 
 const AdminDashboardMain = () => {
   const { user } = useSelector((state) => state.auth);
-  const { data: stats, error, isLoading } = useGetAdminStatsQuery;
+  const { data: stats, error, isLoading } = useGetAdminStatsQuery();
+  console.log(stats);
   if (isLoading) {
     return <div>Loading...</div>;
   }
