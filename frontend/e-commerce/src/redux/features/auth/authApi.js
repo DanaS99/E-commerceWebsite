@@ -63,5 +63,5 @@ const authApi = createApi({
     })
 })
 
-export const { useRegisterUserMutation, useLoginUserMutation, useLogoutUserMutation, useDeleteUserMutation, useGetUserQuery, useUpdateUserMutation, useEditUserMutation } = authApi;
+export const { useRegisterUserMutation, useLoginUserMutation, useLogoutUserMutation, useDeleteUserMutation, useGetUserQuery, useUpdateUserMutation, useEditUserMutation, useEditProfileMutation } = authApi;
 export default authApi;

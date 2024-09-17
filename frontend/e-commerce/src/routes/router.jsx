@@ -12,6 +12,11 @@ import DashboardLayout from '../pages/dashboard/dashboardLayout';
 import PrivateRoute from './PrivateRoute';
 import UserDashboardMain from '../pages/dashboard/user/dashboard/UserDashboardMAin';
 import UserOrders from '../pages/dashboard/user/User/UserOrders';
+import OrderDetails from '../pages/dashboard/user/Order/OrderDetails';
+import UserPayment from '../pages/dashboard/user/User/UserPayment';
+import UserReviews from '../pages/dashboard/user/User/UserReviews';
+import UserProfile from '../pages/dashboard/user/User/UserProfile';
+import AdminDashboardMain from '../pages/dashboard/admin/dashboard/AdminDashboardMain';
 
 
 const router = createBrowserRouter([
@@ -44,9 +49,9 @@ const router = createBrowserRouter([
         element: <PaymentSuccess />,
       },
       {
-        path: '/cancel',
-        element: <div>Payment canceled</div>,
-      },
+        path: '/orders/:orderId',
+        element: <OrderDetails />   
+      }
     ],
   },
   {
@@ -78,15 +83,15 @@ const router = createBrowserRouter([
       },
       {
         path: 'payments',
-        element: <div>User payment</div>,
+        element: <UserPayment />,
       },
       {
         path: 'profile',
-        element: <div>User profile</div>,
+        element: <UserProfile />,
       },
       {
         path: 'reviews',
-        element: <div>User reviews</div>,
+        element: <UserReviews />
       },
 
       //admin routes (only admin can access these routes)
@@ -94,7 +99,7 @@ const router = createBrowserRouter([
         path: 'admin',
         element: (
           <PrivateRoute role='admin'>
-            <div>Admin dashboard</div>
+            <AdminDashboardMain />
           </PrivateRoute>
         ),
       },

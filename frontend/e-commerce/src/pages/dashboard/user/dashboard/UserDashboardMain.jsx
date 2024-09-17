@@ -1,11 +1,26 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Bar } from 'react-chartjs-2'
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js'
+import { Bar } from 'react-chartjs-2';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
 import { useGetUserStatsQuery } from '../../../../redux/features/stats/statsApi';
 import UserStats from './UserStats';
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const UserDashboardMain = () => {
   const { user } = useSelector((state) => state.auth);
@@ -46,23 +61,27 @@ const UserDashboardMain = () => {
       tooltip: {
         callback: {
           label: function (tooltipItem) {
-              return  `${tooltipItem.label}: ${tooltipItem.raw}`
-          }
-        }
+            return `${tooltipItem.label}: ${tooltipItem.raw}`;
+          },
+        },
       },
     },
   };
 
-  return <div className='p-6'>
-<div>
-  <h1 className='text-2xl font-semibold mb-4'>User Dashboard</h1>
-  <p className='text-gray-500'>Hi, {user?.username}! Welcome to your user dashboard</p>
-</div>
-  <UserStats stats={stats} />
-<div className='mb-6'>
-  <Bar data={data} options={options} />
-</div>
-  </div>;
+  return (
+    <div className='p-6'>
+      <div>
+        <h1 className='text-2xl font-semibold mb-4'>User Dashboard</h1>
+        <p className='text-gray-500'>
+          Hi, {user?.username}! Welcome to your user dashboard
+        </p>
+      </div>
+      <UserStats stats={stats} />
+      <div className='mb-6'>
+        <Bar data={data} options={options} />
+      </div>
+    </div>
+  );
 };
 
 export default UserDashboardMain;

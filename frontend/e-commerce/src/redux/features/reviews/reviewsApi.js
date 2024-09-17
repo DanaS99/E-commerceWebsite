@@ -1,13 +1,13 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { getBaseUrl } from '../../../utils/baseURL';
 
-const reviewApi = createApi({
-  reducerPath: 'reviewApi',
+const reviewsApi = createApi({
+  reducerPath: 'reviewsApi',
   baseQuery: fetchBaseQuery({
     baseUrl: `${getBaseUrl()}/api/reviews`,
     credentials: 'include',
   }),
-  tagTypes: ['Reviews'],
+  tagTypes: ['Review'],
   endpoints: (builder) => ({
     postReview: builder.mutation({
       query: (reviewData) => ({
@@ -16,7 +16,7 @@ const reviewApi = createApi({
         body: reviewData,
       }),
       invalidatesTags: (result, error, { postId }) => [
-        { type: 'Reviews', id: postId },
+        { type: 'Review', id: postId },
       ],
     }),
     getReviewsCount: builder.query({
@@ -29,11 +29,11 @@ const reviewApi = createApi({
         url: `/${userId}`,
       }),
       providesTags: (result) =>
-        result ? [{ type: 'Reviews', id: result[0]?.email }] : [],
+      result? [{type: 'Review', id: result[0]?.email}] : [],
     }),
   }),
 });
 
-export const { usePostReviewMutation, useGetReviewsCountQuery, useGetReviewsByUserIdQuery } = reviewApi;
+export const { usePostReviewMutation, useGetReviewsCountQuery, useGetReviewsByUserIdQuery } = reviewsApi;
 
-export default reviewApi;
+export default reviewsApi;
