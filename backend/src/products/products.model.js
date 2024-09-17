@@ -12,5 +12,5 @@ const productSchema = new mongoose.Schema({
   author: { type: mongoose.Types.ObjectId, ref: 'User', required: true },
 });
 
-const Products =  mongoose.model('Product', productSchema);
+const Products =  mongoose.model('Products', productSchema);
 module.exports = Products;

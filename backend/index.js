@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 //const bodyParser = require('body-parser');
+
+
 const app = express();
 require('dotenv').config();
 const port = process.env.PORT || 5000;
@@ -46,6 +48,7 @@ async function main() {
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
+
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
